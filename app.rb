@@ -28,7 +28,7 @@ end
 
 patch('/division/:id') do
   department = params.fetch('department')
-  @divisions = Division.find(params.fetch('id').to_i)
+  @division = Division.find(params.fetch('id').to_i)
   @division.update({:department => department})
   @divisions = Division.all
   erb(:index)
