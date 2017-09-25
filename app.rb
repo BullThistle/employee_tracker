@@ -22,6 +22,14 @@ post('/') do
 end
 
 get('/division/:id') do
-  @divisions = Division.all
+  @divisions = Division.find(params.fetch(:id).to_i)
   erb(:division_detail)
+end
+
+patch('/division/:id') do
+  department = params.fetch('department')
+  @divisions = Division.find(params.fetch('id').to_i)
+  @division.update({:department => department})
+  @divisions = Division.all
+  erb(:index)
 end

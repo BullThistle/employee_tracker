@@ -1,5 +1,16 @@
-<h1><%= @division.department %></h1>
 
-<p>This is the detail page for <%= @division.department %>. Here you can change the name of the department or delete it all together!</p>
+<h1><%= @divisions.department %></h1>
+
+<p>This is the detail page for <%= @divisions.department %>. Here you can change the name of the department or delete it all together!</p>
+
+<h3>Update <%= @divisions.department %></h3>
+
+<form action="/division/<%= @divisions.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="department">Rename the department to:</label>
+  <input id="department" name="department" type="text">
+
+  <button type="submit">Update</button>
+</form>
 
 <a href="/">Return to Main Page</a>
