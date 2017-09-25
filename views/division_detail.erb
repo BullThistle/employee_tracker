@@ -13,4 +13,10 @@
   <button type="submit">Update</button>
 </form>
 
+<h3>Click to delete</h3>
+<form action="/division/<%= @divisions.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" name="button">Delete</button>
+</form>
+
 <a href="/">Return to Main Page</a>

@@ -21,6 +21,13 @@ post('/') do
   erb(:index)
 end
 
+delete('/division/:id') do
+  division = Division.find(params.fetch(:id).to_i)
+  division.destroy
+  @divisions = Division.all
+  erb :index
+end
+
 get('/division/:id') do
   @divisions = Division.find(params.fetch(:id).to_i)
   erb(:division_detail)
