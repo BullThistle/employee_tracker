@@ -21,6 +21,16 @@ post('/') do
   erb(:index)
 end
 
+post ('/division/:id') do
+  name = params.fetch('employee')
+  division = Division.find(params.fetch('id').to_i)
+  # binding.pry
+  employees = Employee.create({:name => name, :division_id => division.id})
+  @employees = Employee.all
+  @divisions = Division.find(params.fetch('id').to_i)
+  erb (:division_detail)
+end
+
 delete('/division/:id') do
   division = Division.find(params.fetch(:id).to_i)
   division.destroy
@@ -30,6 +40,7 @@ end
 
 get('/division/:id') do
   @divisions = Division.find(params.fetch(:id).to_i)
+  @employees = Employee.all
   erb(:division_detail)
 end
 

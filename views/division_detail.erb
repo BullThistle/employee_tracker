@@ -19,4 +19,23 @@
   <button type="submit" name="button">Delete</button>
 </form>
 
+<% if @employees.any? %>
+<p>Here are the employees currently assigned to this department:</p>
+
+  <% @employees.each do |employee| %>
+    <ul>
+      <li><%= employee.name %></li>
+    </ul>
+  <% end %>
+<% else %>
+<p>There aren't any employees assigned to this department yet!</p>
+<% end %>
+
+<h3>Add employee to division</h3>
+<form action="/division/<%= @divisions.id %>" method="post">
+  <label for="employee">Name:</label>
+  <input name="employee" type="text">
+  <button type="submit">Submit</button>
+</form>
+
 <a href="/">Return to Main Page</a>
