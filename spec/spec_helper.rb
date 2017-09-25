@@ -7,7 +7,16 @@ require 'pg'
 
 RSpec.configure do |config|
   config.after(:each) do
-    DB.exec('DELETE FROM volunteers *;')
-    DB.exec('DELETE FROM projects *;')
+    Employee.all.each do |employee|
+      employee.destroy
+    end
+
+    Division.all.each do |division|
+      division.destroy
+    end
+
+    Project.all.each do |project|
+      project.destroy
+    end
   end
 end

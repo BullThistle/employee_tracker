@@ -1,0 +1,21 @@
+<h1>Welcome, HR Manager!</h1>
+
+<% if @divisions.any? %>
+<p>Here are the current departmental divisions in the company:</p>
+
+  <% @divisions.each do |division| %>
+    <ul>
+      <li><a href="/division/<%= division.id %>"> <%= division.department %> </a></li>
+    </ul>
+  <% end %>
+
+<% else %>
+<p>There aren't any departmental divisions yet!</p>
+<% end %>
+
+<h3>Add department divisions:</h3>
+<form action="/" method="post">
+  <label for="department">Department Name:</label>
+  <input name="department" type="text">
+  <button type="submit">Add!</button>
+</form>
